@@ -1,0 +1,24 @@
+type Task {
+    number: ID!
+    operator: Operator!
+}
+
+type Operator {
+    id: ID!
+    name: String!
+    type: String
+    tasks: [Task]!
+}
+
+# The Root Query for the application
+type Query {
+    lastTasks(count: Int, offset: Int): [Task]!
+    task(number: ID!): Task
+    operator(id: ID!): Operator
+
+}
+
+# The Root Mutation for the application
+type Mutation {
+    createTask(number: ID!, operatorId: String!) : Operator!
+}
